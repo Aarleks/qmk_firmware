@@ -26,6 +26,43 @@ enum user_layers {
 };
 
 
+enum custom_keycodes {
+  MY_MAIL = SAFE_RANGE,
+  UNI_ID,
+  AARLEKS
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case MY_MAIL:
+      if (record->event.pressed) {
+        // when keycode MY_MAIL is pressed
+        SEND_STRING("Aarleks@gmail.com");
+      } else {
+        // when keycode MY_MAIL is released
+      }
+      break;
+    case UNI_ID:
+      if (record->event.pressed) {
+	  // send the sting
+	  SEND_STRING("30031443");
+      } else {
+	  // do nothing
+      }
+      break;
+    case AARLEKS:
+      if (record->event.pressed) {
+	  // send the sting
+	  SEND_STRING("Aarleks");
+      } else {
+	  // do nothing
+      }
+      break;
+
+  }
+  return true;
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (COLEMAK)
    *                     ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
@@ -44,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(KEEB, KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_G, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPACE,\
     LGUI_T(KC_ESC), KC_A, KC_R, KC_S, KC_T, KC_D, KC_H, KC_N, KC_E, KC_I, KC_O, LT(WINMAN, KC_QUOT),\
     KC_LSPO, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_K, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSPC,\
-    LCTL_T(KC_GRV), LT(MACRO, KC_LBRC), XXXXXXX, LALT_T(KC_DELETE), LSFT_T(KC_NO), MO(NUM), KC_SPC, KC_ENT, KC_RALT, LT(NUM, KC_RBRC), RCTL_T(KC_BSLASH)\
+    LCTL_T(KC_GRV), LT(MACRO, KC_LBRC), KC_EQUAL, LALT_T(KC_DELETE), LSFT_T(KC_NO), MO(NUM), KC_SPC, KC_ENT, KC_RALT, LT(NUM, KC_RBRC), RCTL_T(KC_BSLASH)\
   ),
 
   /* Base layer (QWERTY)
@@ -116,9 +153,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
 */
   [MACRO] = LAYOUT_planck_1x2uR(
-     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
-     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
-     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
+     _______, _______, UNI_ID, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
+     _______, AARLEKS, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
+     _______, _______, _______, _______, _______, _______, _______, MY_MAIL, _______, _______, _______, _______,\
      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______\
   ),
 
