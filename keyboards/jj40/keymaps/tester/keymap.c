@@ -72,10 +72,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                     ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *  Hold for Shift  -- │  (  │  Z  │  X  │  C  │  V  │  B  │  K  │  M  │  ,  │  .  │  /  │  )  │ -- Hold for Shift
    *                     ├─────┼─────┼─────┼─────┼─────┼─────┼─────-─────┼─────┼─────┼─────┼─────┤
-   *  Hold for CTL    -- │  ~  │Macro│  ⌥  │ Alt │ Shft│ Num │   Space   │ Ent │  ⌥  │Macro│  \  │ -- Hold for CTL
+   *  Hold for CTL    -- │  ~  │  [  │  =  │ Del │ Shft│ Num │   Space   │ Ent │ Alt │  ]  │  \  │ -- Hold for CTL
    *                     └─────┴─────┴─────┴─────┴─────┴─────┴─────-─────┴─────┴─────┴─────┴─────┘
-   *                            / Tap for Del/                                         /
-   *       Tap for ] [ --------'-----------------------------------------------------'
+   *                        |     |           |                                         |     |
+   *  Hold for ---------   CTL  Macro        Alt                                       Num   CTL
    */
   [COLEMAK] = LAYOUT_planck_1x2uR(\
     LT(KEEB, KC_TAB), KC_Q, KC_W, KC_F, KC_P, KC_G, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_BSPACE,\
@@ -129,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 │     │     │     │     │     │     │     │     │     │     │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │     │     │     │     │     │     │     │     │     │     │     │
-   *                └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+   *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
 */
   [WINMAN] = LAYOUT_planck_1x2uR(
     _______, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), LGUI(KC_0), _______,\
@@ -138,19 +138,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______\
   ),
 
-  /* GUI (window management/mouse/media controls) layer
+  /* MACRO (macros for lazy typing - common strings) layer
    *
    *         Mouse keys -----/```````````````````\               /```````````````````\----- Window manager
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Ms B2│Ms Up│Ms B1│Ms WD│     │     │Prev │ NW  │  N  │ NE  │     │
+   *                 │     │     │Staff│     │     │     │     │     │     │     │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │Ms L │Ms Dn│Ms R │Ms WU│     │     │Full │  W  │Centr│  E  │     │
+   *                 │     │ Me  │     │     │     │     │     │     │     │     │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │Undo │ Cut │Copy │Paste│     │     │Next │ SW  │  S  │ SE  │     │
+   *                 │     │     │     │     │     │     │     │GMail│     │     │     │     │
    *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━┪
-   *                 ┃     ┃Prev │Play │Next │Brig-│Sleep│Wake │Brig+│Mute │Vol- │Vol+ ┃     ┃
+   *                 ┃     ┃     │     │     │     │     │     │     │     │     │     ┃     ┃
    *                 ┗━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┛
-   *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
+   *
 */
   [MACRO] = LAYOUT_planck_1x2uR(
      _______, _______, UNI_ID, _______, _______, _______, _______, _______, _______, _______, _______, _______,\
@@ -162,13 +162,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keyboard settings layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *     Firmware -- │     │Reset│Make │     │     │     │     │     │     │     │Vers │     │
+   *     Firmware -- │     │     │     │     │     │     │     │     │     │     │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *          RGB -- │Qwert│     │     │Mode-│Mode+│Hue -│Hue +│Sat -│Sat +│     │Play1│Rec 1│ -- Record/play macro 1
+   *          RGB -- │Qwert│     │     │Mode-│Mode+│Hue -│Hue +│Sat -│Sat +│     │     │     │ -- Record/play macro 1
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *        Audio -- │Colem│Voic-│Voic+│Mus +│Mus -│MIDI+│MIDI-│Aud +│Aud -│     │Play2│Rec 2│ -- Record/play macro 2
+   *        Audio -- │Colem│     │     │     │     │     │     │     │     │     │     │     │ -- Record/play macro 2
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
-   *                 │Steno│     │Swap │Norm ┃     ┃  Toggle   ┃     ┃Toggl│Brig-│Brig+│Stop │ -- Stop recording macro
+   *                 │     │     │     │     ┃     ┃     |     ┃     ┃     │     │     │     │ -- Stop recording macro
    *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
