@@ -1,6 +1,4 @@
----
-title: "Planck 40% 2u_R Keymapping Ideas"
----
+# Planck 40% 2u_R Keymapping Ideas
 
 ### Layers:
 
