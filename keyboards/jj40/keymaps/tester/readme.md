@@ -1,6 +1,6 @@
 # Planck 40% 2u_R Keymapping Ideas
 
-### Layers:
+## Layers:
 
 * Colemak
 * Qwerty
